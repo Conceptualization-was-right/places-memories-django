@@ -11,23 +11,7 @@
 </head>
 <body class="bg-body-tertiary" style="font-family: Montserrat,sans-serif; background-color: #999DA">
 
-<header>
-<nav class="navbar bg-body-secondary">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="../static/images/plamories_logo.png" alt="plamories" width="165" height="29">
-    </a>
-      <a>
-          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-              <button type="button" class="btn btn-light">Войти с помощью</button>
-              <button type="button" class="btn btn-danger">Google</button>
-              <button type="button" class="btn btn-primary">VK</button>
-          </div>
-      </a>
-  </div>
-</nav>
-</header>
-
+{% include header.html %}
 
 <div class="container" style="padding-top: 20px">
     <h1 class="col-md-6" style="font-weight: 900"> А ТЫ ПОМНИШЬ, ГДЕ ТЫ БЫЛ ВЧЕРА? </h1>
@@ -51,9 +35,7 @@
     </div>
 </div>
 
-<footer>
-<div class="bg-body-secondary text-center p-2 fixed-bottom" > © 2023, Все такое </div>
-</footer>
+{% include footer.html %}
 
 </body>
 </html>
