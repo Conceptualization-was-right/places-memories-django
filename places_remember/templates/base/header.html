@@ -2,13 +2,17 @@
 <nav class="navbar bg-body-secondary">
   <div class="container">
     <a class="navbar-brand" href="#">
-      <img src="../static/images/plamories_logo.png" alt="plamories" width="165" height="29">
+      <img src="static/images/plamories_logo.png" alt="plamories" width="165" height="29">
     </a>
       <a>
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-              <button type="button" class="btn btn-light">Войти с помощью</button>
-              <button type="button" class="btn btn-danger">Google</button>
-              <button type="button" class="btn btn-primary">VK</button>
+              {% if user.is_authenticated == False %}
+              <a href="#" class="btn btn-light">Войти с помощью</a>
+              <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" class="btn btn-danger">Google</a>
+              <a href="{% url 'social:begin' 'vk-oauth2' %}?next={{ request.path }}" class="btn btn-primary">VK</a>
+              {% else %}
+              <a href="#" class="btn btn-primary">Выйти</a>
+              {% endif %}
           </div>
       </a>
   </div>
