@@ -3,9 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,500;0,600;0,800;0,900;1,400&display=swap" rel="stylesheet">
 </head>
-<body>
-<h1> Hello is it map</h1>
+<body class="bg-body-tertiary" style="font-family: Montserrat,sans-serif; background-color: #999DA">
+
+{% include 'base/header.html' %}
+
+
+
+{% if memories %}
+<div class="container p-5">
+    <div class="row">
+        {% for i in memories %}
+        <div class="col-md-3 p-3">
+            <div class="card" style="width: 15rem;">
+        <img class="card-img-top" src={{i.map_url}} alt="Map">
+        <div class="card-body">
+            <h5 class="card-title">{{i.title}}</h5>
+            <p class="card-text">{{i.comment}}</p>
+        </div>
+        </div>
+        </div>
+        {% endfor %}
+        <div class="col-md-3 p-3">
+            <div class="card" style="width: 15rem;">
+        <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#addMemory"> <img class="card-img-top" src="static/images/add.png" alt="Add"> </button>
+        <div class="card-body">
+            <h5 class="card-title">Добавить новое воспоминание</h5>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+
+<div class="container text-center d-flex justify-content-center align-items-center" style="font-weight: 600; height: 75vh ">
+    <div class="row">
+        <div class="col-md">
+            <div class="p-2" style="font-size:24px">У вас нет ни одного воспоминания</div>
+            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#addMemory">Добавить воспоминание</button>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="modal fade" id="addMemory" tabindex="-1" role="dialog" aria-labelledby="addMemoryLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addMemoryLabel">Привет!</h5>
+      </div>
+      <div class="modal-body">
+           <form method="POST">
+               {% csrf_token %}
+               <table>
+                {{ form }}
+               </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Пур закрыть</button>
+        <input type="submit" value="Мур" class="btn btn-primary"></input>
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+{% include 'base/footer.html' %}
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
