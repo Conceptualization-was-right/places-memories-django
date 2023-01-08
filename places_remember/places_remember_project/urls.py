@@ -20,7 +20,12 @@ from places_memories import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
+    path('', views.index, name='main'),
+    path('profile', views.profile, name='profile'),
+    path('logout', views.logout_view, name='logout'),
+    path('map', views.map, name='map'),
+    path('data/<str:latitude>/<str:longitude>', views.memories),
+    path('accounts/', include('allauth.urls')),
     re_path('', include('social_django.urls', namespace='social'))
 ]
 

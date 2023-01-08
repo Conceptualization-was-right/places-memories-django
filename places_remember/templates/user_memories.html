@@ -60,20 +60,18 @@
         <h5 class="modal-title" id="addMemoryLabel">Привет!</h5>
       </div>
       <div class="modal-body">
-           <form method="POST">
-               {% csrf_token %}
-               <table>
-                {{ form }}
-               </table>
+           Сначала выберите координаты места на карте, а затем добавьте название и комментарий
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Пур закрыть</button>
-        <input type="submit" value="Мур" class="btn btn-primary"></input>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        <a href="{% url 'map' %}" class="btn btn-success" role="button" aria-pressed="true">Перейти к карте</a>
       </div>
         </form>
     </div>
   </div>
 </div>
+
+
 
 {% include 'base/footer.html' %}
 
